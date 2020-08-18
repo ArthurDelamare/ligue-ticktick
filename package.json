@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ArthurDelamare/ligue-ticktick/issues"
   },
-  "homepage": "https://github.com/ArthurDelamare/ligue-ticktick#readme"
+  "homepage": "https://github.com/ArthurDelamare/ligue-ticktick#readme",
+  "dependencies": {
+    "ticktick-node-api": "^1.1.0"
+  }
 }
