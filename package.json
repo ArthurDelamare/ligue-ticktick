@@ -1,0 +1,20 @@
+{
+  "name": "ligue-ticktick",
+  "version": "1.0.0",
+  "description": "ligue-ticktick",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurDelamare/ligue-ticktick.git"
+  },
+  "keywords": [],
+  "author": "Arthur Delamare <delamare.arth@gmail.com> (https://github.com/ArthurDelamare)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurDelamare/ligue-ticktick/issues"
+  },
+  "homepage": "https://github.com/ArthurDelamare/ligue-ticktick#readme"
+}
