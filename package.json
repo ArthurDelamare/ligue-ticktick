@@ -20,5 +20,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "ticktick-node-api": "^1.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   }
 }
