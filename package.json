@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ArthurDelamare/ligue-ticktick#readme",
   "dependencies": {
+    "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "ticktick-node-api": "^1.1.0"
   },
