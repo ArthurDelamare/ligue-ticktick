@@ -10,7 +10,12 @@ async function execute() {
   });
 
   const tasks = await api.getTasks({ name: "Ligue", status: 0 });
-  console.log(tasks);
+
+  console.log("Objectifs du jour :");
+
+  for (const task of tasks) {
+    console.log(`:construction: ${task.title}`);
+  }
 }
 
 execute();
