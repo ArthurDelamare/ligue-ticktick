@@ -21,7 +21,7 @@
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "ora": "^5.0.0",
-    "ticktick-node-api": "^1.1.0"
+    "ticktick-node-api": "^1.1.1"
   },
   "devDependencies": {
     "eslint": "^7.7.0",
