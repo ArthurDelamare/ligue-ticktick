@@ -1,8 +1,11 @@
 {
   "name": "ligue-ticktick",
   "version": "1.0.0",
-  "description": "ligue-ticktick",
-  "main": "index.js",
+  "description": "Command Line Interface to get formatted goals from TickTick",
+  "main": "src/cli.js",
+  "bin": {
+    "ligue-ticktick": "./src/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
