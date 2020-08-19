@@ -27,8 +27,8 @@ Pour récupérer les tâches de TickTick, il faut pouvoir s'y connecter. C'est p
 
 Par défaut, le fichier est localisé ici :
 
-- Windows : %USERPROFILE%\AppData\Roaming\npm\node_modules
-- Unix : /usr/local/lib/node_modules
+- Windows : %USERPROFILE%\AppData\Roaming\npm\node_modules\ligue-ticktick
+- Unix : /usr/local/lib/node_modules/ligue-ticktick
 
 Fichier **.env.example** par défaut :
 
