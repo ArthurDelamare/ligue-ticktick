@@ -42,6 +42,6 @@ TICKTICK_PASSWORD=your_password
 Afin de distinguer les tâches du jour à poster sur la Ligue, il est nécessaire de posséder une Liste spécifique. Par défaut, le nom de la liste doit être Ligue mais il est possible de spécifier un autre nom via un argument.
 
 <div align="center">
-	<img width="238" height="90" src="AddListButton.PNG">
-	<p>Bouton pour ajouter une liste sur TickTick<p>
+	<img width="598" height="230" src="AddListButton.PNG">
+	<p>Setup nécessaire pour récupérer les tâches du jour<p>
 </div>
