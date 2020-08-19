@@ -1,34 +1,50 @@
 #!/usr/bin/env node
 
-require("dotenv").config();
 const program = require("commander");
 const TickTickAPI = require("ticktick-node-api");
 const ora = require("ora");
+const path = require("path");
 
-program.version("0.0.1");
+const envFileArray = __dirname.split(path.sep);
+envFileArray.pop();
+const envFile = envFileArray.join(path.sep) + path.sep + ".env";
+require("dotenv").config({ path: envFile });
 
 /**
  * @description function to connect to TickTick,
  * grab the tasks from a specific project then, display the goals
  * @param {*} todoEmoji the discord emoji to show before a goal
- * @param {*} projectName the name of the project containing the tasks
+ * @param {*} listName the name of the project containing the tasks
  */
-async function generateGoals(
-  todoEmoji = ":construction:",
-  projectName = "Ligue"
-) {
+async function generateGoals(todoEmoji = ":construction:", listName = "Ligue") {
   const api = new TickTickAPI();
 
   const connectSpinner = ora("Connexion à TickTick").start();
-  await api.login({
-    username: process.env.TICKTICK_USERNAME,
-    password: process.env.TICKTICK_PASSWORD,
-  });
-  connectSpinner.succeed();
+  try {
+    await api.login({
+      username: process.env.TICKTICK_USERNAME,
+      password: process.env.TICKTICK_PASSWORD,
+    });
+    connectSpinner.succeed();
+  } catch (e) {
+    connectSpinner.fail();
+    console.error(
+      "Echec, vérifiez votre nom d'utilisateur et mot de passe à l'adresse suivante :"
+    );
+    console.log(envFile);
+    return;
+  }
 
   const goalsSpinner = ora("Récupération des objectifs").start();
-  const tasks = await api.getTasks({ name: projectName, status: 0 });
-  goalsSpinner.succeed();
+  let tasks = [];
+  try {
+    tasks = await api.getTasks({ name: listName, status: 0 });
+    goalsSpinner.succeed();
+  } catch (e) {
+    goalsSpinner.fail();
+    console.error(`Liste ${listName} introuvable sur TickTick`);
+    return;
+  }
 
   console.log();
   console.log("Objectifs du jour :");
@@ -36,6 +52,8 @@ async function generateGoals(
     console.log(`${todoEmoji} ${task.title}`);
   }
 }
+
+program.version("0.0.1");
 
 program
   .command("get-goals")
@@ -45,10 +63,10 @@ program
     ":construction:"
   )
   .option(
-    "-p, --project <name>",
+    "-l, --list <name>",
     "nom du projet TickTick contenant les tâches à récupérer",
     "Ligue"
   )
-  .action((options) => generateGoals(options.todo, options.project));
+  .action((options) => generateGoals(options.todo, options.list));
 
 program.parse(process.argv);
