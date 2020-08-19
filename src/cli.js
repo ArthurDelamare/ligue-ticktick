@@ -3,6 +3,8 @@ const program = require("commander");
 const TickTickAPI = require("ticktick-node-api");
 const ora = require("ora");
 
+program.version("0.0.1");
+
 async function execute() {
   const api = new TickTickAPI();
 
