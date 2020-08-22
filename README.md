@@ -33,8 +33,9 @@ Par défaut, le fichier est localisé ici :
 Fichier **.env.example** par défaut :
 
 ```env
-TICKTICK_USERNAME=your_username
-TICKTICK_PASSWORD=your_password
+TICKTICK_USERNAME = "your_username"
+TICKTICK_PASSWORD = "your_password"
+DISCORD_TOKEN = "your_discord_token"
 ```
 
 ### Liste de tâches
@@ -50,10 +51,11 @@ Afin de distinguer les tâches du jour à poster sur la Ligue, il est nécessair
 
 Une seule commande utilisable sur n'importe quel terminal permet de récupérer vos objectifs du jour. Il ne restera qu'à copier le contenu puis coller dans le salon #objectifs-updates.
 
-Deux arguments existent :
+Trois arguments existent :
 
 - **--list** ou **-l** suivi du nom de la liste (Ligue par défaut)
 - **--todo** ou **-t** suivi de l'emoji souhaité devant les objectifs (:construction: par défaut)
+- **--discord** ou **-d**
 
 Commande de base :
 
@@ -71,6 +73,12 @@ Avec un emoji différent :
 
 ```bash
 ligue-ticktick get-goals --todo :gear:
+```
+
+Pour envoyer un message sur Discord dans #objectifs-updates :
+
+```bash
+ligue-ticktick get-goals --discord
 ```
 
 ## A venir
