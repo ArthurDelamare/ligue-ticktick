@@ -16,8 +16,8 @@ const OBJECTIFS_UPDATES_CHANNEL_ID = '672078358699573249'
 /**
  * @description function to connect to TickTick,
  * grab the tasks from a specific project then, display the goals
- * @param {*} todoEmoji the discord emoji to show before a goal
- * @param {*} listName the name of the project containing the tasks
+ * @param {string} todoEmoji the discord emoji to show before a goal
+ * @param {string} listName the name of the project containing the tasks
  */
 async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", doSendDiscordMessage = false) {
   const ticktickAPI = new TickTickAPI();
@@ -41,12 +41,12 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
   try {
     tasks = await ticktickAPI.getTasks({ name: listName, status: 0 });
     goalsSpinner.succeed();
-  } catch (e) {
+  } catch {
     goalsSpinner.fail();
     console.error(`Liste ${listName} introuvable sur TickTick`);
     process.exit(0);
   }
-  let tasksFormatted = "";
+  let tasksFormatted = "Objectifs du jour :\n";
   for (const task of tasks) {
     tasksFormatted += `${todoEmoji} ${task.title}\n`;
   }
@@ -66,9 +66,7 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
     }
   }
 
-  console.log();
-  console.log("Objectifs du jour :");
-  console.log(tasksFormatted);
+  console.log("\n" + tasksFormatted);
 }
 
 program.version("0.0.1");
