@@ -34,7 +34,7 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
       "Echec, vérifiez votre nom d'utilisateur et mot de passe à l'adresse suivante :"
     );
     console.log(envFile);
-    return;
+    process.exit(0);
   }
   const goalsSpinner = ora("Récupération des objectifs").start();
   let tasks = [];
@@ -44,7 +44,7 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
   } catch (e) {
     goalsSpinner.fail();
     console.error(`Liste ${listName} introuvable sur TickTick`);
-    return;
+    process.exit(0);
   }
   let tasksFormatted = "";
   for (const task of tasks) {
@@ -55,14 +55,14 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
     const discordSpinner = ora("Envoie un message sur Discord dans #objectifs-updates").start();
     try {
       await discordAPI.sendDiscordMessage(tasksFormatted, OBJECTIFS_UPDATES_CHANNEL_ID)
-      goalsSpinner.succeed();
+      discordSpinner.succeed();
     } catch {
-      goalsSpinner.fail();
+      discordSpinner.fail();
       console.error(
         "Echec, vérifiez votre token Discord à l'adresse suivante :"
       );
       console.log(envFile);
-      return;
+      process.exit(0);
     }
   }
 
