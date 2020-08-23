@@ -32,7 +32,7 @@ async function generateGoals(
       password: process.env.TICKTICK_PASSWORD,
     });
     connectSpinner.succeed();
-  } catch {
+  } catch (e) {
     connectSpinner.fail();
     console.error(
       "Echec, vérifiez votre nom d'utilisateur et mot de passe à l'adresse suivante :"
@@ -45,7 +45,7 @@ async function generateGoals(
   try {
     tasks = await ticktickAPI.getTasks({ name: listName, status: 0 });
     goalsSpinner.succeed();
-  } catch {
+  } catch (e) {
     goalsSpinner.fail();
     console.error(`Liste ${listName} introuvable sur TickTick`);
     process.exit(0);
@@ -65,7 +65,7 @@ async function generateGoals(
         OBJECTIFS_UPDATES_CHANNEL_ID
       );
       discordSpinner.succeed();
-    } catch {
+    } catch (e) {
       discordSpinner.fail();
       console.error(
         "Echec, vérifiez votre token Discord à l'adresse suivante :"
