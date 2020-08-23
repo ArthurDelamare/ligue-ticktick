@@ -4,14 +4,14 @@ const TickTickAPI = require("ticktick-node-api");
 const ora = require("ora");
 const path = require("path");
 
-const DiscordAPI = require('./utils/DiscordAPI');
+const DiscordAPI = require("./utils/DiscordAPI");
 
 const envFileArray = __dirname.split(path.sep);
 envFileArray.pop();
 const envFile = envFileArray.join(path.sep) + path.sep + ".env";
 require("dotenv").config({ path: envFile });
-const discordAPI = new DiscordAPI(process.env.DISCORD_TOKEN)
-const OBJECTIFS_UPDATES_CHANNEL_ID = '672078358699573249'
+const discordAPI = new DiscordAPI(process.env.DISCORD_TOKEN);
+const OBJECTIFS_UPDATES_CHANNEL_ID = "672078358699573249";
 
 /**
  * @description function to connect to TickTick,
@@ -19,7 +19,11 @@ const OBJECTIFS_UPDATES_CHANNEL_ID = '672078358699573249'
  * @param {string} todoEmoji the discord emoji to show before a goal
  * @param {string} listName the name of the project containing the tasks
  */
-async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", doSendDiscordMessage = false) {
+async function generateGoals(
+  todoEmoji = ":construction:",
+  listName = "Ligue",
+  doSendDiscordMessage = false
+) {
   const ticktickAPI = new TickTickAPI();
   const connectSpinner = ora("Connexion à TickTick").start();
   try {
@@ -50,11 +54,16 @@ async function generateGoals(todoEmoji = ":construction:", listName = "Ligue", d
   for (const task of tasks) {
     tasksFormatted += `${todoEmoji} ${task.title}\n`;
   }
-  
+
   if (doSendDiscordMessage) {
-    const discordSpinner = ora("Envoie un message sur Discord dans #objectifs-updates").start();
+    const discordSpinner = ora(
+      "Envoie un message sur Discord dans #objectifs-updates"
+    ).start();
     try {
-      await discordAPI.sendDiscordMessage(tasksFormatted, OBJECTIFS_UPDATES_CHANNEL_ID)
+      await discordAPI.sendDiscordMessage(
+        tasksFormatted,
+        OBJECTIFS_UPDATES_CHANNEL_ID
+      );
       discordSpinner.succeed();
     } catch {
       discordSpinner.fail();
@@ -87,6 +96,8 @@ program
     "-d, --discord",
     "envoie un message sur Discord dans #objectifs-updates"
   )
-  .action((options) => generateGoals(options.todo, options.list, options.discord));
+  .action((options) =>
+    generateGoals(options.todo, options.list, options.discord)
+  );
 
 program.parse(process.argv);
