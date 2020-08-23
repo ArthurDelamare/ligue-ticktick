@@ -7,7 +7,8 @@
     "ligue-ticktick": "./src/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/cli.js get-goals",
+    "format": "prettier --write ./src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,12 @@
   },
   "homepage": "https://github.com/ArthurDelamare/ligue-ticktick#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "ora": "^5.0.0",
-    "ticktick-node-api": "^1.1.1"
+    "ticktick-node-api": "^1.1.1",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "eslint": "^7.7.0",
