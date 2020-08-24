@@ -48,8 +48,8 @@ Afin de distinguer les tâches du jour à poster sur la Ligue, il est nécessair
 </div>
 
 ## Utilisation
-
-Une seule commande utilisable sur n'importe quel terminal permet de récupérer vos objectifs du jour. Il ne restera qu'à copier le contenu puis coller dans le salon #objectifs-updates.
+### get-goals
+Pour récupérer les objectifs sur TickTick, rien de plus simple : une seule commande à taper dans le terminal. Il ne restera qu'à copier le contenu puis coller dans le salon #objectifs-updates ou ajouter le paramètre --discord pour que le contenu soit envoyé automatiquement.
 
 Trois arguments existent :
 
@@ -81,8 +81,14 @@ Pour envoyer un message sur Discord dans #objectifs-updates :
 ligue-ticktick get-goals --discord
 ```
 
-## A venir
+### get-report
+Voir notre évolution est toujours agréable, c'est pourquoi une commande existe pour générer un rapport. Le rapport contient toutes les tâches terminées sur X jours, affiché dans la console.
 
-Par la suite, la possibilité de récupérer toutes les tâches datées à aujourd'hui sera possible (plutôt qu'isoler les tâches dans une Liste).
+Par défaut, le rapport est généré en prenant en compte les 31 derniers jours mais, l'option **--days <number>** permet de modifier cette valeur.
 
-Aussi, une commande pour créer un rapport des tâches effectuées ce mois sera bientôt disponible (toutes les tâches terminées en 30 jours).
+Bien évidemment, il est également possible de changer le nom de la liste, comme pour get-goals avec l'option **--list <name>**.
+
+Exemple de commande pour générer un rapport sur 15 jours :
+```bash
+ligue-ticktick get-report --days 15
+```
