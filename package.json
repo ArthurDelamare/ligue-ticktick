@@ -27,7 +27,7 @@
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "ora": "^5.0.0",
-    "ticktick-node-api": "^1.1.1",
+    "ticktick-node-api": "^1.2.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
